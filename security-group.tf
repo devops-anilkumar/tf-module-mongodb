@@ -2,6 +2,7 @@
 resource "aws_security_group" "allow_mongodb" {
   name        = "robot-${var.ENV}-mongodb-sg"
   description = "Allow MongoDB internal inbound traffic"
+  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
     description      = "allow docdb from local network"
