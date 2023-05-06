@@ -1,5 +1,7 @@
 # THIS IS GOING TO INJECT THE SCHEMA OF MYSQL
 resource "null_resource" "schema" {
+   depends_on = [aws_docdb_cluster.docdb]
+   
   provisioner "local-exec" {
   command = <<EOF
        cd /tmp
