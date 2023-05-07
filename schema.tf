@@ -1,10 +1,10 @@
 # THIS IS GOING TO INJECT THE SCHEMA OF MYSQL
 resource "null_resource" "schema" {
    depends_on = [aws_docdb_cluster.docdb]
-   
   provisioner "local-exec" {
   command = <<EOF
        cd /tmp
+       rm -rf mongodb-main
        curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
        unzip -o mongodb.zip
        cd mongodb-main
