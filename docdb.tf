@@ -27,8 +27,8 @@ output "output_ref" {
 
 # CREATES INSTANCES NEEDED FOR THE DOCDB CLUSTER
 resource "aws_docdb_cluster_instance" "cluster_instances" {
-  count              = 1
+  count              = var.DOCDB_INSTANCE_COUNT
   identifier         = "robot-${var.ENV}-docdb-instance"
   cluster_identifier = aws_docdb_cluster.docdb.id
-  instance_class     = "db.t3.medium"
+  instance_class     = var.DOCDB_INSTANCE_CLASS
 }
